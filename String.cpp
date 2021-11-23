@@ -1,4 +1,4 @@
-#pragma warning(disable : 4996) //что бы не использовать безопасные функции
+#pragma warning(disable : 4996) //С‡С‚Рѕ Р±С‹ РЅРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р±РµР·РѕРїР°СЃРЅС‹Рµ С„СѓРЅРєС†РёРё
 #include "String.h"
 #include <iostream>
 #include <string.h>
@@ -7,151 +7,151 @@ using namespace std;
 
 
 
-//Конструктор преобразования: Преобразует char* в String
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ: РџСЂРµРѕР±СЂР°Р·СѓРµС‚ char* РІ String
 String::String(const char* s)
 {
 	cout << "Conversion constructor: " << s << endl;
-	length = strlen(s); //вчисление длины
-	sPtr = new char[length + 1]; //выделение памяти
-	assert(sPtr != 0); //выход если не выделена
-	strcpy(sPtr, s); //скопировать строку в объект
+	length = strlen(s); //РІС‡РёСЃР»РµРЅРёРµ РґР»РёРЅС‹
+	sPtr = new char[length + 1]; //РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё
+	assert(sPtr != 0); //РІС‹С…РѕРґ РµСЃР»Рё РЅРµ РІС‹РґРµР»РµРЅР°
+	strcpy(sPtr, s); //СЃРєРѕРїРёСЂРѕРІР°С‚СЊ СЃС‚СЂРѕРєСѓ РІ РѕР±СЉРµРєС‚
 }
-// Конструктор копии
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёРё
 String::String(const String& copy)
 {
 	cout << "Copy constructor: " << copy.sPtr << endl;
-	length = copy.length; //скопировать длину
-	sPtr = new char[length + 1]; //выделить память
-	assert(sPtr != 0);//проверить результат
-	strcpy(sPtr, copy.sPtr); //скопировать строку
+	length = copy.length; //СЃРєРѕРїРёСЂРѕРІР°С‚СЊ РґР»РёРЅСѓ
+	sPtr = new char[length + 1]; //РІС‹РґРµР»РёС‚СЊ РїР°РјСЏС‚СЊ
+	assert(sPtr != 0);//РїСЂРѕРІРµСЂРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚
+	strcpy(sPtr, copy.sPtr); //СЃРєРѕРїРёСЂРѕРІР°С‚СЊ СЃС‚СЂРѕРєСѓ
 }
-//деструктор
+//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 String::~String()
 {
 	cout << "Destructor: " << sPtr << endl;
-	delete[] sPtr; //очистить строку
+	delete[] sPtr; //РѕС‡РёСЃС‚РёС‚СЊ СЃС‚СЂРѕРєСѓ
 }
-//Перегруженная операция =; избегать самоприсваивания
+//РџРµСЂРµРіСЂСѓР¶РµРЅРЅР°СЏ РѕРїРµСЂР°С†РёСЏ =; РёР·Р±РµРіР°С‚СЊ СЃР°РјРѕРїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 const String& String::operator=(const String& rigth)
 {
 	cout << "operators called" << endl;
 
-	if (&rigth != this) //избегать самоприсваивания
+	if (&rigth != this) //РёР·Р±РµРіР°С‚СЊ СЃР°РјРѕРїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	{
-		delete[] sPtr; //предотвратить утечку памяти
-		length = rigth.length; //новая длина строки
-		sPtr = new char[length + 1]; //выделяем память
-		assert(sPtr != 0); //проверка результата
-		strcpy(sPtr, rigth.sPtr); //скопировать строку
+		delete[] sPtr; //РїСЂРµРґРѕС‚РІСЂР°С‚РёС‚СЊ СѓС‚РµС‡РєСѓ РїР°РјСЏС‚Рё
+		length = rigth.length; //РЅРѕРІР°СЏ РґР»РёРЅР° СЃС‚СЂРѕРєРё
+		sPtr = new char[length + 1]; //РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ
+		assert(sPtr != 0); //РїСЂРѕРІРµСЂРєР° СЂРµР·СѓР»СЊС‚Р°С‚Р°
+		strcpy(sPtr, rigth.sPtr); //СЃРєРѕРїРёСЂРѕРІР°С‚СЊ СЃС‚СЂРѕРєСѓ
 	}
 	else
 		cout << "Attempted assigment of a String to itself \n";
-	return *this; //разрешить конкатенацию присваиваний
+	return *this; //СЂР°Р·СЂРµС€РёС‚СЊ РєРѕРЅРєР°С‚РµРЅР°С†РёСЋ РїСЂРёСЃРІР°РёРІР°РЅРёР№
 }
 
-//Конкатенация правого операнда с этим объектом
-// и сохранение результата в этом объекте
+//РљРѕРЅРєР°С‚РµРЅР°С†РёСЏ РїСЂР°РІРѕРіРѕ РѕРїРµСЂР°РЅРґР° СЃ СЌС‚РёРј РѕР±СЉРµРєС‚РѕРј
+// Рё СЃРѕС…СЂР°РЅРµРЅРёРµ СЂРµР·СѓР»СЊС‚Р°С‚Р° РІ СЌС‚РѕРј РѕР±СЉРµРєС‚Рµ
 
 String& String::operator+=(const String& right)
 {
-	char* tempPtr = sPtr; //сохранить, чтобы иметь возможность стереть
-	length += right.length; //новая длина String
-	sPtr = new char[length + 1]; //выделение памяти
-	assert(sPtr != 0); //выйти если память не размещена
-	strcpy(sPtr, tempPtr); // левая часть новой String
-	strcat(sPtr, right.sPtr); //правая часть новой String
-	delete[] tempPtr; // восстановить старое место 
-	return *this; // рзарешить конкатенацию вызовов
+	char* tempPtr = sPtr; //СЃРѕС…СЂР°РЅРёС‚СЊ, С‡С‚РѕР±С‹ РёРјРµС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЃС‚РµСЂРµС‚СЊ
+	length += right.length; //РЅРѕРІР°СЏ РґР»РёРЅР° String
+	sPtr = new char[length + 1]; //РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё
+	assert(sPtr != 0); //РІС‹Р№С‚Рё РµСЃР»Рё РїР°РјСЏС‚СЊ РЅРµ СЂР°Р·РјРµС‰РµРЅР°
+	strcpy(sPtr, tempPtr); // Р»РµРІР°СЏ С‡Р°СЃС‚СЊ РЅРѕРІРѕР№ String
+	strcat(sPtr, right.sPtr); //РїСЂР°РІР°СЏ С‡Р°СЃС‚СЊ РЅРѕРІРѕР№ String
+	delete[] tempPtr; // РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ СЃС‚Р°СЂРѕРµ РјРµСЃС‚Рѕ 
+	return *this; // СЂР·Р°СЂРµС€РёС‚СЊ РєРѕРЅРєР°С‚РµРЅР°С†РёСЋ РІС‹Р·РѕРІРѕРІ
 }
-//String пустая?
+//String РїСѓСЃС‚Р°СЏ?
 int String::operator!() const 
 {
 	return length == 0;
 }
-//String равна правой String?
+//String СЂР°РІРЅР° РїСЂР°РІРѕР№ String?
 int String::operator==(const String& rigth) const
 {
 	return strcmp(sPtr, rigth.sPtr) == 0;
 }
-//String не равна правой String?
+//String РЅРµ СЂР°РІРЅР° РїСЂР°РІРѕР№ String?
 int String::operator!=(const String& rigth) const
 {
 	return strcmp(sPtr, rigth.sPtr) != 0;
 }
-//String меньше чем правая String?
+//String РјРµРЅСЊС€Рµ С‡РµРј РїСЂР°РІР°СЏ String?
 int String::operator<(const String& rigth) const
 {
 	return strcmp(sPtr, rigth.sPtr) < 0;
 }
-//String больше чем правая String?
+//String Р±РѕР»СЊС€Рµ С‡РµРј РїСЂР°РІР°СЏ String?
 int String::operator>(const String& rigth) const
 {
 	return strcmp(sPtr, rigth.sPtr) > 0;
 }
-//String больше или равна чем правая String?
+//String Р±РѕР»СЊС€Рµ РёР»Рё СЂР°РІРЅР° С‡РµРј РїСЂР°РІР°СЏ String?
 int String::operator>=(const String& rigth) const
 {
 	return strcmp(sPtr, rigth.sPtr) >= 0;
 }
-//String меньше или равна чем правая String?
+//String РјРµРЅСЊС€Рµ РёР»Рё СЂР°РІРЅР° С‡РµРј РїСЂР°РІР°СЏ String?
 int String::operator<=(const String& rigth) const
 {
 	return strcmp(sPtr, rigth.sPtr) <= 0;
 }
-//Возврат ссылна на символ в String
+//Р’РѕР·РІСЂР°С‚ СЃСЃС‹Р»РЅР° РЅР° СЃРёРјРІРѕР» РІ String
 char& String::operator[](int subscript)
 {
-	//проверка выход индекса за границы
+	//РїСЂРѕРІРµСЂРєР° РІС‹С…РѕРґ РёРЅРґРµРєСЃР° Р·Р° РіСЂР°РЅРёС†С‹
 	assert(subscript >= 0 && subscript < length);
-	return sPtr[subscript]; //создать lvalue
+	return sPtr[subscript]; //СЃРѕР·РґР°С‚СЊ lvalue
 }
-//Возврат подстроки, начинающейся с index и
-//длиной subLength как ссылки на объект String
+//Р’РѕР·РІСЂР°С‚ РїРѕРґСЃС‚СЂРѕРєРё, РЅР°С‡РёРЅР°СЋС‰РµР№СЃСЏ СЃ index Рё
+//РґР»РёРЅРѕР№ subLength РєР°Рє СЃСЃС‹Р»РєРё РЅР° РѕР±СЉРµРєС‚ String
 String& String::operator()(int index, int subLength)
 {
-	//убедимся что индес находится в границах и длина подстроки >=0
+	//СѓР±РµРґРёРјСЃСЏ С‡С‚Рѕ РёРЅРґРµСЃ РЅР°С…РѕРґРёС‚СЃСЏ РІ РіСЂР°РЅРёС†Р°С… Рё РґР»РёРЅР° РїРѕРґСЃС‚СЂРѕРєРё >=0
 	assert((index >= 0) && (index < length) && (subLength >= 0));
-	String* subPtr = new String;//пустая String 
-	assert(subPtr != 0); //проверка выделения памяти
-	//определение длины подстроки
+	String* subPtr = new String;//РїСѓСЃС‚Р°СЏ String 
+	assert(subPtr != 0); //РїСЂРѕРІРµСЂРєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё
+	//РѕРїСЂРµРґРµР»РµРЅРёРµ РґР»РёРЅС‹ РїРѕРґСЃС‚СЂРѕРєРё
 	int size;
 	if ((subLength == 0) || (index + subLength > length))
 		size = length - index + 1;
 	else
 		size = subLength + 1;
-	//разместить память и подстроки
+	//СЂР°Р·РјРµСЃС‚РёС‚СЊ РїР°РјСЏС‚СЊ Рё РїРѕРґСЃС‚СЂРѕРєРё
 	delete subPtr->sPtr;
 	subPtr->length = size;
 	subPtr->sPtr = new char[size];
-	assert(subPtr->sPtr != 0); //проверка выделения памяти
-	//скопировать подстроку в новую String
+	assert(subPtr->sPtr != 0); //РїСЂРѕРІРµСЂРєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё
+	//СЃРєРѕРїРёСЂРѕРІР°С‚СЊ РїРѕРґСЃС‚СЂРѕРєСѓ РІ РЅРѕРІСѓСЋ String
 	for (int i = index, j = 0; i < index + size - 1; i++, j++)
 	{
 		subPtr->sPtr[j] = sPtr[i];
-		subPtr->sPtr[j] = '\0'; //ограничить новую строку нулевым символом
+		subPtr->sPtr[j] = '\0'; //РѕРіСЂР°РЅРёС‡РёС‚СЊ РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ РЅСѓР»РµРІС‹Рј СЃРёРјРІРѕР»РѕРј
 	}
 
 	return *subPtr;
 }
 
-//Возврат длины строки
+//Р’РѕР·РІСЂР°С‚ РґР»РёРЅС‹ СЃС‚СЂРѕРєРё
 int String::getLength() const
 {
 	return length;
 }
 
-//Перегруженная операция вывода 
+//РџРµСЂРµРіСЂСѓР¶РµРЅРЅР°СЏ РѕРїРµСЂР°С†РёСЏ РІС‹РІРѕРґР° 
 ostream& operator<< (ostream& output, const String& string)
 {
 	output << string.sPtr; 
-	return output; //разрешить конкатенацию
+	return output; //СЂР°Р·СЂРµС€РёС‚СЊ РєРѕРЅРєР°С‚РµРЅР°С†РёСЋ
 }
 
-//Перегруженная операция ввода
+//РџРµСЂРµРіСЂСѓР¶РµРЅРЅР°СЏ РѕРїРµСЂР°С†РёСЏ РІРІРѕРґР°
 istream& operator>> (istream& input, String& s)
 {
-	static char temp[100]; //буфеер ввода
+	static char temp[100]; //Р±СѓС„РµРµСЂ РІРІРѕРґР°
 	input >> temp;
-	s = temp; // используем операцию присвааивания класса String
-	return input; //разрешить конкатенацию
+	s = temp; // РёСЃРїРѕР»СЊР·СѓРµРј РѕРїРµСЂР°С†РёСЋ РїСЂРёСЃРІР°Р°РёРІР°РЅРёСЏ РєР»Р°СЃСЃР° String
+	return input; //СЂР°Р·СЂРµС€РёС‚СЊ РєРѕРЅРєР°С‚РµРЅР°С†РёСЋ
 }

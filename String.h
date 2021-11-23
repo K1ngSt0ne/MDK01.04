@@ -12,26 +12,26 @@ class String
 	friend istream& operator>> (istream&, String&);
 
 public:
-	String(const char* = ""); //конструктор преобразования
-	String(const String&); //конструкор копии
-	~String(); //деструктор
-	const String& operator=(const String&); //присваивание
-	String& operator+=(const String&);//конкатенация
-	int operator!() const; //String пустая?
-	int operator==(const String&) const; //проверка s1==s2
-	int operator!=(const String&) const; //проверка s1!=s2
-	int operator<(const String&) const; //проверка s1>s2
-	int operator>(const String&) const;//проверка s1<s2
-	int operator>=(const String&) const; //проверка s1>=s2
-	int operator<=(const String&) const; //проверка s1<=s2
-	char& operator[](int); //возврат ссылки char
-	char* sPtr;//указатель на начало строки
-	String& operator()(int, int);//возврат подстроки
-	int getLength() const; //возврат длины строки
+	String(const char* = ""); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ
+	String(const String&); //РєРѕРЅСЃС‚СЂСѓРєРѕСЂ РєРѕРїРёРё
+	~String(); //РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+	const String& operator=(const String&); //РїСЂРёСЃРІР°РёРІР°РЅРёРµ
+	String& operator+=(const String&);//РєРѕРЅРєР°С‚РµРЅР°С†РёСЏ
+	int operator!() const; //String РїСѓСЃС‚Р°СЏ?
+	int operator==(const String&) const; //РїСЂРѕРІРµСЂРєР° s1==s2
+	int operator!=(const String&) const; //РїСЂРѕРІРµСЂРєР° s1!=s2
+	int operator<(const String&) const; //РїСЂРѕРІРµСЂРєР° s1>s2
+	int operator>(const String&) const;//РїСЂРѕРІРµСЂРєР° s1<s2
+	int operator>=(const String&) const; //РїСЂРѕРІРµСЂРєР° s1>=s2
+	int operator<=(const String&) const; //РїСЂРѕРІРµСЂРєР° s1<=s2
+	char& operator[](int); //РІРѕР·РІСЂР°С‚ СЃСЃС‹Р»РєРё char
+	char* sPtr;//СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°С‡Р°Р»Рѕ СЃС‚СЂРѕРєРё
+	String& operator()(int, int);//РІРѕР·РІСЂР°С‚ РїРѕРґСЃС‚СЂРѕРєРё
+	int getLength() const; //РІРѕР·РІСЂР°С‚ РґР»РёРЅС‹ СЃС‚СЂРѕРєРё
 
 private:
 	
-	int length; //длина строки
+	int length; //РґР»РёРЅР° СЃС‚СЂРѕРєРё
 };
 
 #endif //  STRING1_H
