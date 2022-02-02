@@ -2,34 +2,37 @@
 #include "String.h"
 #include <iostream>
 #include <string.h>
-#include <assert.h>
+//#include <assert.h>
 using namespace std;
 
+//вектор чаров сдлеать!
 
 
-//Конструктор преобразования: Преобразует char* в String
-String::String(const char* s)
+String::String(const vector<char> s)
 {
 	cout << "Conversion constructor: " << s << endl;
-	length = strlen(s); //вчисление длины
-	sPtr = new char[length + 1]; //выделение памяти
-	assert(sPtr != 0); //выход если не выделена
-	strcpy(sPtr, s); //скопировать строку в объект
+	length = s.size(); //вчисление длины
+	vector<char> sPtr(0, length); //выделение памяти
+	//assert(sPtr != 0); //выход если не выделена
+	//strcpy(sPtr, s); //скопировать строку в объект
+	sPtr = s;
 }
 // Конструктор копии
 String::String(const String& copy)
 {
 	cout << "Copy constructor: " << copy.sPtr << endl;
 	length = copy.length; //скопировать длину
-	sPtr = new char[length + 1]; //выделить память
-	assert(sPtr != 0);//проверить результат
-	strcpy(sPtr, copy.sPtr); //скопировать строку
+	vector<char> sPtr(0, length);
+	sPtr = copy.sPtr;
+	//sPtr = new char[length + 1]; //выделить память
+	//assert(sPtr != 0);//проверить результат
+	//strcpy(sPtr, copy.sPtr); //скопировать строку
 }
 //деструктор
 String::~String()
 {
 	cout << "Destructor: " << sPtr << endl;
-	delete[] sPtr; //очистить строку
+	sPtr.clear(); //очистить строку
 }
 //Перегруженная операция =; избегать самоприсваивания
 const String& String::operator=(const String& rigth)
@@ -38,11 +41,14 @@ const String& String::operator=(const String& rigth)
 
 	if (&rigth != this) //избегать самоприсваивания
 	{
-		delete[] sPtr; //предотвратить утечку памяти
+		//delete[] sPtr; //предотвратить утечку памяти
+		sPtr.clear();
 		length = rigth.length; //новая длина строки
-		sPtr = new char[length + 1]; //выделяем память
-		assert(sPtr != 0); //проверка результата
-		strcpy(sPtr, rigth.sPtr); //скопировать строку
+		vector<char> sPtr(0, length);
+		//sPtr = new char[length + 1]; //выделяем память
+		//assert(sPtr != 0); //проверка результата
+		sPtr = rigth.sPtr;
+		//strcpy(sPtr, rigth.sPtr); //скопировать строку
 	}
 	else
 		cout << "Attempted assigment of a String to itself \n";
@@ -54,13 +60,18 @@ const String& String::operator=(const String& rigth)
 
 String& String::operator+=(const String& right)
 {
-	char* tempPtr = sPtr; //сохранить, чтобы иметь возможность стереть
+	vector<char> tempPtr = sPtr; //сохранить, чтобы иметь возможность стереть
 	length += right.length; //новая длина String
-	sPtr = new char[length + 1]; //выделение памяти
-	assert(sPtr != 0); //выйти если память не размещена
-	strcpy(sPtr, tempPtr); // левая часть новой String
-	strcat(sPtr, right.sPtr); //правая часть новой String
-	delete[] tempPtr; // восстановить старое место 
+	sPtr.reserve(length + 1); //выделение памяти
+	//assert(sPtr != 0); //выйти если память не размещена
+	tempPtr = sPtr; // левая часть новой String
+	//sPtr.push_back(right.sPtr);
+	for (int i = 0; i < right.sPtr.size(); i++)
+	{
+		sPtr.push_back(right.sPtr[i]);
+	}
+	//strcat(sPtr, right.sPtr); //правая часть новой String
+	tempPtr.clear(); // восстановить старое место 
 	return *this; // рзарешить конкатенацию вызовов
 }
 //String пустая?
@@ -71,67 +82,89 @@ int String::operator!() const
 //String равна правой String?
 int String::operator==(const String& rigth) const
 {
-	return strcmp(sPtr, rigth.sPtr) == 0;
+	if (sPtr == rigth.sPtr)
+		return true;
+	//return strcmp(sPtr, rigth.sPtr) == 0;
 }
 //String не равна правой String?
 int String::operator!=(const String& rigth) const
 {
-	return strcmp(sPtr, rigth.sPtr) != 0;
+	if (sPtr != rigth.sPtr)
+		return true;
+	//return strcmp(sPtr, rigth.sPtr) != 0;
 }
 //String меньше чем правая String?
 int String::operator<(const String& rigth) const
 {
-	return strcmp(sPtr, rigth.sPtr) < 0;
+	if (sPtr.size() < rigth.sPtr.size())
+		return true;
+	//return strcmp(sPtr, rigth.sPtr) < 0;
 }
 //String больше чем правая String?
 int String::operator>(const String& rigth) const
 {
-	return strcmp(sPtr, rigth.sPtr) > 0;
+	if (sPtr.size() > rigth.sPtr.size())
+		return true;
+	//return strcmp(sPtr, rigth.sPtr) > 0;
 }
 //String больше или равна чем правая String?
 int String::operator>=(const String& rigth) const
 {
-	return strcmp(sPtr, rigth.sPtr) >= 0;
+	if (sPtr.size() >= rigth.sPtr.size())
+		return true;
+	//return strcmp(sPtr, rigth.sPtr) >= 0;
 }
 //String меньше или равна чем правая String?
 int String::operator<=(const String& rigth) const
 {
-	return strcmp(sPtr, rigth.sPtr) <= 0;
+	if (sPtr.size() <= rigth.sPtr.size())
+		return true;
+	//return strcmp(sPtr, rigth.sPtr) <= 0;
 }
 //Возврат ссылна на символ в String
 char& String::operator[](int subscript)
 {
-	//проверка выход индекса за границы
-	assert(subscript >= 0 && subscript < length);
+
 	return sPtr[subscript]; //создать lvalue
 }
-//Возврат подстроки, начинающейся с index и
-//длиной subLength как ссылки на объект String
+
 String& String::operator()(int index, int subLength)
 {
 	//убедимся что индес находится в границах и длина подстроки >=0
-	assert((index >= 0) && (index < length) && (subLength >= 0));
-	String* subPtr = new String;//пустая String 
-	assert(subPtr != 0); //проверка выделения памяти
-	//определение длины подстроки
-	int size;
-	if ((subLength == 0) || (index + subLength > length))
-		size = length - index + 1;
-	else
-		size = subLength + 1;
-	//разместить память и подстроки
-	delete subPtr->sPtr;
-	subPtr->length = size;
-	subPtr->sPtr = new char[size];
-	assert(subPtr->sPtr != 0); //проверка выделения памяти
-	//скопировать подстроку в новую String
-	for (int i = index, j = 0; i < index + size - 1; i++, j++)
+	//assert((index >= 0) && (index < length) && (subLength >= 0));
+	if ((index >= 0) && (index < length) && (subLength >= 0))
 	{
-		subPtr->sPtr[j] = sPtr[i];
-		subPtr->sPtr[j] = '\0'; //ограничить новую строку нулевым символом
-	}
+		String* subPtr;// = new String;//пустая String 
+	//assert(subPtr != 0); //проверка выделения памяти
+	//определение длины подстроки
+		int size;
+		if ((subLength == 0) || (index + subLength > length))
+			size = length - index + 1;
+		else
+			size = subLength + 1;
+		vector<char> newSubStr(0, size);
+		for (int i = index; i < subLength; i++)
+		{
+			newSubStr.push_back(sPtr.at(i));
+		}
+		*subPtr = newSubStr;
+		//разместить память и подстроки
+		/*delete subPtr->sPtr;
+		subPtr->length = size;
+		subPtr->sPtr = new char[size];
+		assert(subPtr->sPtr != 0); //проверка выделения памяти
+		//скопировать подстроку в новую String
+		for (int i = index, j = 0; i < index + size - 1; i++, j++)
+		{
+			subPtr->sPtr[j] = sPtr[i];
+			subPtr->sPtr[j] = '\0'; //ограничить новую строку нулевым символом
+		}*/
 
-	return *subPtr;
+		return *subPtr;
+	}
+	else
+		cout << "Fatal exception!";
+	
 }
 
 //Возврат длины строки
@@ -152,6 +185,7 @@ istream& operator>> (istream& input, String& s)
 {
 	static char temp[100]; //буфеер ввода
 	input >> temp;
-	s = temp; // используем операцию присвааивания класса String
+	vector<char> data(temp, temp + 1);
+	s = data; // используем операцию присвааивания класса String
 	return input; //разрешить конкатенацию
 }
