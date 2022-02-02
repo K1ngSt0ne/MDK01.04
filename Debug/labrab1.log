@@ -1,2 +1,13 @@
-﻿  main_fun.cpp
-  labrab1.vcxproj -> C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\Debug\labrab1.exe
+﻿  String.cpp
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(61,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(85): warning C4715: String::operator!=: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(78): warning C4715: String::operator==: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(99): warning C4715: String::operator>: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(92): warning C4715: String::operator<: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(113): warning C4715: String::operator<=: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(106): warning C4715: String::operator>=: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(157): warning C4717: operator<<: рекурсия на всех путях выполнения, функция вызовет переполнение стека
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(144): warning C4715: String::operator(): значение возвращается не при всех путях выполнения
+main_fun.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: __thiscall String::String(char const *)" (??0String@@QAE@PBD@Z) в функции _main.
+String.obj : error LNK2001: неразрешенный внешний символ "public: __thiscall String::String(char const *)" (??0String@@QAE@PBD@Z).
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\Debug\labrab1.exe : fatal error LNK1120: неразрешенных внешних элементов: 1

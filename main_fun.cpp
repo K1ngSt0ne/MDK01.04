@@ -4,15 +4,17 @@
 удал€емого символа, вставки символов, получени€ длины строки,
 конкатенации другой строки.*/
 
-//—делано при помощи книги ’. ƒейтела, ѕ. ƒейтела " ак программировать на —" 
-//use book P. and H.Deitels "How to program C"
+
 #include <iostream>
 #include "String.h"
 using namespace std;
 
 int main()
 {
-	String s1(''), s2();
+	const char* test = "test";	
+	const char* test2 = " you make";
+	const char* test3 = " pro gress ";
+	String s1(test), s2(test2), s3(test3);
 	//проверка перегруженных операций равенства и отношений
 	cout << "s1 is \"" << s1 << "\"; s2 is \"" << s2 << "\"; s3 is empty\n"
 		<< "The results of comparing s2 and s1: " 
@@ -25,11 +27,11 @@ int main()
 
 	//проверка содержимого String перегруженной операцией (!)
 	cout << "Testing !s3:\n";
-	/*if (!s3) {
+	if (!s3) {
 		cout << "s3 is empty; assigning s1 to s3;\n";
 		s3 = s1; //проверка перегруженной операции присваивани€
 		cout << "s3 is \"" << s3 << "\"\n\n";
-	}*/
+	}
 
 	//проверка перегруженной операции конкатенации String
 	cout << "s1 += s2 yields s1 = ";
