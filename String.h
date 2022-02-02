@@ -14,7 +14,7 @@ class String
 public:
 	String(const vector<char> ); //конструктор преобразования
 	String(const String&); //конструкор копии
-	String(const char* = "");
+	String(const char* );
 	~String(); //деструктор
 	const String& operator=(const String&); //присваивание
 	String& operator+=(const String&);//конкатенация

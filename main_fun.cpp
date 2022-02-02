@@ -16,22 +16,22 @@ int main()
 	const char* test3 = " pro gress ";
 	String s1(test), s2(test2), s3(test3);
 	//проверка перегруженных операций равенства и отношений
-	cout << "s1 is \"" << s1 << "\"; s2 is \"" << s2 << "\"; s3 is empty\n"
+	/*cout << "s1 is \"" << s1 << "\"; s2 is \"" << s2 << "\"; s3 is empty\n"
 		<< "The results of comparing s2 and s1: " 
 		<< "\ns2 == s1 yields " << (s2 == s1)
 		<< "\ns2 != s1 yields " << (s2 != s1)
 		<< "\ns2 > s1 yields " << (s2 > s1)
 		<< "\ns2 < s1 yields " << (s2 < s1)
 		<< "\ns2 >= s1 yields " << (s2 >= s1)
-		<< "\ns2 <= s1 yields " << (s2 <= s1) << "\n\n";
+		<< "\ns2 <= s1 yields " << (s2 <= s1) << "\n\n";*/
 
 	//проверка содержимого String перегруженной операцией (!)
-	cout << "Testing !s3:\n";
+	/*cout << "Testing !s3:\n";
 	if (!s3) {
 		cout << "s3 is empty; assigning s1 to s3;\n";
 		s3 = s1; //проверка перегруженной операции присваивания
 		cout << "s3 is \"" << s3 << "\"\n\n";
-	}
+	}*/
 
 	//проверка перегруженной операции конкатенации String
 	cout << "s1 += s2 yields s1 = ";
@@ -54,16 +54,11 @@ int main()
 		<< s1(15, 0) << "\n\n"; // 0 означает что "до конца строки"
 
 	// проверка конструктора копии
-	String* s4Ptr = new String(s1);
-	cout << "*s4Ptr = " << *s4Ptr << "\n\n";
+	String s4Ptr = s1;
+	cout << "s4Ptr = " << s4Ptr << "\n\n";
 
-	//проверка операцаии присваивания (=) с самоприсваиванием
-	cout << "assigning *s4Ptr to *s4Ptr\n";
-	*s4Ptr = *s4Ptr; // проверка перегруженного самопррисваивания
-	cout << "*s4Ptr = " << *s4Ptr << endl;
 
-	//проверка деструктора
-	delete s4Ptr;
+	
 
 	//проверка операции индексирования, возвращающей lvalue
 	s1[0] = 'H';

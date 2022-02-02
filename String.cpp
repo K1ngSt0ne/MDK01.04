@@ -6,12 +6,11 @@ using namespace std;
 
 String::String(const vector<char> s)
 {	
-	cout << "Conversion constructor: ";
-	for (auto element : s)
-		cout << element;
-	cout << endl;
+	//cout << "Conversion constructor: ";
+	for (int i=0;i<s.size();i++)
+		cout << s[i];
 	length = s.size(); //вчисление длины
-	vector<char> sPtr(0, length); //выделение памяти
+	//vector<char> sPtr(0, length); //выделение памяти
 	sPtr = s;
 }
 // Конструктор копии
@@ -24,6 +23,16 @@ String::String(const String& copy)
 	length = copy.length; 
 	vector<char> sPtr(0, length);
 	sPtr = copy.sPtr;
+}
+String::String(const char* test)
+{
+	vector<char> charstr;	
+	int len = strlen(test);
+	// Выводим символы в прямом порядке
+	for (int i = 0; i < len; ++i) {
+		charstr.push_back(test[i]);
+	}
+	sPtr = charstr;
 }
 //деструктор
 String::~String()
@@ -123,8 +132,7 @@ String& String::operator()(int index, int subLength)
 
 	if ((index >= 0) && (index < length) && (subLength >= 0))
 	{
-		String* subPtr = new String;// = new String;//пустая String 
-
+	
 		int size;
 		if ((subLength == 0) || (index + subLength > length))
 			size = length - index + 1;
@@ -135,7 +143,7 @@ String& String::operator()(int index, int subLength)
 		{
 			newSubStr.push_back(sPtr.at(i));
 		}
-		*subPtr = newSubStr;
+		String* subPtr = new String(newSubStr);
 		return *subPtr;
 	}
 	else
