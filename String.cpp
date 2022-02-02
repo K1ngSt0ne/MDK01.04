@@ -160,7 +160,8 @@ int String::getLength() const
 //Перегруженная операция вывода 
 ostream& operator<< (ostream& output, const String& string)
 {
-	output << string.sPtr; 
+	for (int i=0; i<string.length;i++)
+		output << string.sPtr[i]; 
 	return output; //разрешить конкатенацию
 }
 
