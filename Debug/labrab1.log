@@ -1,2 +1,16 @@
-﻿  main_fun.cpp
+﻿  String.cpp
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(10,16): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(70,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(133,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(137,46): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(163,17): warning C4018: <: несоответствие типов со знаком и без знака
+  main_fun.cpp
+  Создание кода...
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(108): warning C4715: String::operator>: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(101): warning C4715: String::operator<: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(94): warning C4715: String::operator!=: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(115): warning C4715: String::operator>=: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(122): warning C4715: String::operator<=: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(87): warning C4715: String::operator==: значение возвращается не при всех путях выполнения
+C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\labrab1\String.cpp(152): warning C4715: String::operator(): значение возвращается не при всех путях выполнения
   labrab1.vcxproj -> C:\Users\Sergey\Desktop\дистанционка\4 курс\1 семестр\МДК 01.04 Матвеев\labrab1\Debug\labrab1.exe

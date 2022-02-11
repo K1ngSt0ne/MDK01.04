@@ -9,7 +9,7 @@ String::String(const vector<char> s)
 	//cout << "Conversion constructor: ";
 	for (int i=0;i<s.size();i++)
 		cout << s[i];
-	length = s.size(); //вчисление длины
+	//length = s.size(); //вчисление длины
 	//vector<char> sPtr(0, length); //выделение памяти
 	sPtr = s;
 }
@@ -20,8 +20,8 @@ String::String(const String& copy)
 	for (auto element : copy.sPtr)
 		cout << element;
 	cout << endl;
-	length = copy.length; 
-	vector<char> sPtr(0, length);
+	//length = copy.length; 
+	//vector<char> sPtr(0, length);
 	sPtr = copy.sPtr;
 }
 String::String(const char* test)
@@ -63,8 +63,8 @@ const String& String::operator=(const String& rigth)
 String& String::operator+=(const String& right)
 {
 	vector<char> tempPtr = sPtr; //сохранить, чтобы иметь возможность стереть
-	length += right.length; //новая длина String
-	sPtr.reserve(length + 1); //выделение памяти
+	//length += right.length; //новая длина String
+	//sPtr.reserve(length + 1); //выделение памяти
 	//assert(sPtr != 0); //выйти если память не размещена
 	tempPtr = sPtr; // левая часть новой String
 	for (int i = 0; i < right.sPtr.size(); i++)
@@ -77,7 +77,7 @@ String& String::operator+=(const String& right)
 //String пустая?
 int String::operator!() const 
 {
-	return length == 0;
+	return sPtr.size() == 0;
 }
 //String равна правой String?
 int String::operator==(const String& rigth) const
@@ -130,12 +130,12 @@ char& String::operator[](int subscript)
 String& String::operator()(int index, int subLength)
 {
 
-	if ((index >= 0) && (index < length) && (subLength >= 0))
+	if ((index >= 0) && (index < sPtr.size()) && (subLength >= 0))
 	{
 	
 		int size;
-		if ((subLength == 0) || (index + subLength > length))
-			size = length - index + 1;
+		if ((subLength == 0) || (index + subLength > sPtr.size()))
+			size = sPtr.size() - index + 1;
 		else
 			size = subLength + 1;
 		vector<char> newSubStr(0, size);
@@ -154,13 +154,13 @@ String& String::operator()(int index, int subLength)
 //Возврат длины строки
 int String::getLength() const
 {
-	return length;
+	return sPtr.size();
 }
 
 //Перегруженная операция вывода 
 ostream& operator<< (ostream& output, const String& string)
 {
-	for (int i=0; i<string.length;i++)
+	for (int i=0; i<string.sPtr.size();i++)
 		output << string.sPtr[i]; 
 	return output; //разрешить конкатенацию
 }

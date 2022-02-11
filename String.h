@@ -32,7 +32,7 @@ public:
 
 private:
 	vector<char> sPtr;
-	int length; //длина строки
+//	int length; //длина строки
 };
 
  //  STRING1_H
